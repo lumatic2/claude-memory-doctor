@@ -1,0 +1,92 @@
+{
+  "skill_name": "memory-doctor",
+  "evals": [
+    {
+      "id": 1,
+      "name": "quick-basic",
+      "prompt": "/memory-doctor",
+      "expected_output": "Quick 모드 선언 후 전역+프로젝트 메모리 스캔, PRI 테이블 출력, 이슈 없는 항목은 ✓ 처리",
+      "files": [],
+      "assertions": [
+        {
+          "id": "mode-declared",
+          "text": "출력 초반에 'Quick' 모드임을 명시적으로 선언한다"
+        },
+        {
+          "id": "both-locations-scanned",
+          "text": "전역 메모리(C--Users-yusun)와 프로젝트 메모리(luma3-portfolio) 두 위치를 모두 언급한다"
+        },
+        {
+          "id": "pri-table-format",
+          "text": "PRI / 항목 / 상태 컬럼을 가진 테이블 형식으로 결과를 출력한다"
+        },
+        {
+          "id": "checkmark-for-clean",
+          "text": "이슈 없는 항목에 ✓ 기호를 사용한다"
+        },
+        {
+          "id": "no-type-misclassification-check",
+          "text": "타입 오분류(체크7) 항목이 출력에 포함되지 않는다 (Quick 모드이므로)"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "quick-stale",
+      "prompt": "memory 점검해줘, stale한 거 있을 것 같아",
+      "expected_output": "Quick 모드로 stale 항목 탐지. 인라인 날짜 패턴(YYYY-MM-DD) 및 완료 여부 구분 포함",
+      "files": [],
+      "assertions": [
+        {
+          "id": "mode-declared",
+          "text": "Quick 모드임을 선언한다"
+        },
+        {
+          "id": "stale-detected",
+          "text": "stale 항목을 1개 이상 탐지하거나, 없으면 ✓로 명확히 표시한다"
+        },
+        {
+          "id": "inline-date-pattern",
+          "text": "인라인 날짜 패턴 (YYYY-MM-DD) 형식을 탐지 대상으로 인식한다"
+        },
+        {
+          "id": "completion-signal",
+          "text": "stale 항목 판정 시 완료 신호(strikethrough, '완료' 등) 여부를 구분하여 표시한다"
+        },
+        {
+          "id": "pri-table-format",
+          "text": "PRI 테이블 형식으로 결과를 출력한다"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "full-audit",
+      "prompt": "메모리 전체 감사해줘, 타입 오분류도 봐줘",
+      "expected_output": "Full 모드 선언 후 체크1~7 전부 실행. 타입 오분류(체크7) 결과 포함",
+      "files": [],
+      "assertions": [
+        {
+          "id": "full-mode-declared",
+          "text": "출력 초반에 'Full' 모드임을 명시적으로 선언한다"
+        },
+        {
+          "id": "type-misclassification-included",
+          "text": "타입 오분류 체크 결과가 출력에 포함된다"
+        },
+        {
+          "id": "both-locations-scanned",
+          "text": "전역과 프로젝트 메모리 두 위치를 모두 스캔한다"
+        },
+        {
+          "id": "pri-table-format",
+          "text": "PRI 테이블 형식으로 결과를 출력한다"
+        },
+        {
+          "id": "fix-suggestions",
+          "text": "이슈 발견 시 수정 제안 또는 승인 요청을 포함한다"
+        }
+      ]
+    }
+  ]
+}
