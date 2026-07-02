@@ -1,3 +1,5 @@
+> **⚠ DEPRECATED (2026-07-03)**: source of truth 는 `~/projects/custom-skills/memory-doctor/` 로 이관. 배포는 `bash setup.sh --skill memory-doctor`. 이 repo 는 삭제 가능(이력은 custom-skills 커밋에 보존).
+
 # claude-memory-doctor
 
 A [Claude Code](https://claude.ai/code) skill that audits and cleans up your auto memory (`MEMORY.md` + topic files).
